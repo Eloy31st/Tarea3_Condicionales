@@ -1,9 +1,13 @@
-public class Ejercicio2 {
+import java.util.Scanner;
+
+public class Ejercicio3 {
     /*Escriba el nombre del mes completo en función de su número (introducido por el usuario).
 
      */
     public static void main(String[] args) {
-        int mes = 1;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce el número del mes");
+        int mes = scanner.nextInt();
         switch (mes) {
             case 1:
                 System.out.println("Enero");
