@@ -109,18 +109,30 @@ Salario neto a pagar: 1.547,42 €
         double tarifa = scanner.nextDouble();
         System.out.println("¿Número de hijos?");
         int hijos = scanner.nextInt();
+        int horasInferior169 = 0;
+        int horasIntermedias = 0;
+        int horasSuperior180 = 0;
         double salarioBruto = 0;
         double salarioNeto = 0;
         double deducciones = 0;
         double primaFamiliar = 0;
         double salarioNetoPagar = 0;
-        String estado = "";
+        String estado;
         if (horas < 169) {
             salarioBruto = horas * tarifa;
+            horasInferior169 = horas;
         } else if (horas >= 169 && horas <= 180) {
             salarioBruto = (169 * tarifa) + ((horas - 169) * (tarifa * 1.5));
+            horasIntermedias = horas - 169;
+            if(horasIntermedias < 0){
+                horasIntermedias = 0;
+            }
         } else if (horas > 180) {
             salarioBruto = (169 * tarifa) + ((horas - 180) * (tarifa * 1.6)) + (((horas - 169) - (horas-180)) * (tarifa * 1.5));
+            horasSuperior180 = horas - 180;
+            if(horasSuperior180 < 0){
+                horasSuperior180 = 0;
+            }
         }
         switch (puesto) {
             case 1:
@@ -148,7 +160,7 @@ Salario neto a pagar: 1.547,42 €
         salarioNetoPagar = salarioNeto + primaFamiliar;
         System.out.println("Nómina de " + nombre + " " + apellido);
         System.out.println("Estado : " + estado);
-        System.out.println("Salario bruto: " + salarioBruto + " € (" + (horas - (horas - 169)) + " horas sin incremento, " + ((horas - 169)-(horas-180)) + " horas con incremento del 50 %, " + (horas - 180) + " horas con incremento del 60 %)");
+        System.out.println("Salario bruto: " + salarioBruto + " € (" + horasInferior169 + " horas sin incremento, " + horasIntermedias + " horas con incremento del 50 %, " + horasSuperior180 + " horas con incremento del 60 %)");
         System.out.println("Cálculo de deducciones:");
         System.out.println("Contribución para el pago de la deuda social y contingencias comunes imponible");
         System.out.println(salarioBruto + " € × 3,49 % = " + (salarioBruto * 0.0349) + " €");
