@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Ejercicio1_V2 {
    /* Modificar el algoritmo anterior para mostrar un mensaje según la temperatura:
 
@@ -23,7 +25,9 @@ public class Ejercicio1_V2 {
 
     */
     public static void main(String[] args) {
-        int temperatura = 1;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduzca la temperatura: ");
+        int temperatura = scanner.nextInt();
         if (temperatura < 2) {
             System.out.println("Riesgo de hielo");
         } else if (temperatura < 15) {
