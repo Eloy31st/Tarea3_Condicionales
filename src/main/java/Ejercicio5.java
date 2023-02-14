@@ -124,12 +124,15 @@ Salario neto a pagar: 1.547,42 €
         } else if (horas >= 169 && horas <= 180) {
             salarioBruto = (169 * tarifa) + ((horas - 169) * (tarifa * 1.5));
             horasIntermedias = horas - 169;
+            horasInferior169 = horas - horasIntermedias;
             if(horasIntermedias < 0){
                 horasIntermedias = 0;
             }
         } else if (horas > 180) {
             salarioBruto = (169 * tarifa) + ((horas - 180) * (tarifa * 1.6)) + (((horas - 169) - (horas-180)) * (tarifa * 1.5));
             horasSuperior180 = horas - 180;
+            horasIntermedias = horas - 169 - horasSuperior180;
+            horasInferior169 = horas - horasIntermedias - horasSuperior180;
             if(horasSuperior180 < 0){
                 horasSuperior180 = 0;
             }
